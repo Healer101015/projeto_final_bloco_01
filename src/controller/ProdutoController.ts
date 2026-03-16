@@ -1,0 +1,94 @@
+import { Produto } from "../model/Produto";
+import { ProdutoRepository } from "../repository/ProdutoRepository";
+
+
+
+
+export class ProdutoController implements ProdutoRepository {
+
+    private listaProdutos: Array<Produto> = new Array<Produto>();
+    private id: number = 0;
+
+    buscarPorId(id: number): void {
+
+        let produto = this.buscarNaCollection(id);
+
+        if (produto != null)
+            produto.visualizar();
+        else
+            console.log("\nProduto não encontrado!");
+
+    }
+
+    listarTodos(): void {
+
+        for (let produto of this.listaProdutos) {
+            produto.visualizar();
+        }
+
+    }
+
+    cadastrar(produto: Produto): void {
+        this.listaProdutos.push(produto);
+        console.log("\nProduto cadastrado com sucesso!");
+    }
+
+    atualizar(produto: Produto): void {
+
+        let buscaProduto = this.buscarNaCollection(produto.id);
+
+        try {
+
+            if (buscaProduto != null) {
+
+                this.listaProdutos[this.listaProdutos.indexOf(buscaProduto)] = produto;
+                console.log("\nProduto atualizado com sucesso!");
+
+            } else
+                console.log("\nProduto não encontrado!");
+
+        } catch (error) {
+
+            console.log("\nErro ao atualizar produto.");
+
+        }
+
+    }
+
+    deletar(id: number): void {
+
+        let buscaProduto = this.buscarNaCollection(id);
+
+        try {
+
+            if (buscaProduto != null) {
+
+                this.listaProdutos.splice(this.listaProdutos.indexOf(buscaProduto), 1);
+                console.log("\nProduto deletado com sucesso!");
+
+            } else
+                console.log("\nProduto não encontrado!");
+
+        } catch (error) {
+
+            console.log("\nErro ao deletar produto.");
+
+        }
+
+    }
+
+    public gerarId(): number {
+        return ++this.id;
+    }
+
+    private buscarNaCollection(id: number): Produto | null {
+
+        for (let produto of this.listaProdutos) {
+            if (produto.id === id)
+                return produto;
+        }
+
+        return null;
+    }
+
+}
