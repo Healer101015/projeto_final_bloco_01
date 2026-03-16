@@ -3,15 +3,15 @@ let opcao: number;
 
 while (true) {
 
-    console.log('*******************************');
+    console.log('**************************');
     console.log('Ecommerce do João');
-    console.log('*******************************');
-    console.log('1 - Cadastrar produto');
-    console.log('2 - Listar produtos');
-    console.log('3 - Buscar produto');
-    console.log('4 - atualizar produto');
-    console.log('5 - deletar produto');
-    console.log('6 - sair');
+    console.log('*****************************');
+    console.log('1 Cadastrar produto');
+    console.log('2  Listar produtos');
+    console.log('3  Buscar produto');
+    console.log('4  atualizar produto');
+    console.log('5  deletar produto');
+    console.log('6  sair');
     console.log('*******************************');
 
     opcao = readlineSync.questionInt("entre com a opcao desejada: ");
