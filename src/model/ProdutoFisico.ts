@@ -21,7 +21,7 @@ export class ProdutoFisico extends Produto {
     }
 
     public visualizar(): void {
-        console.log("\nDados do Produto Físico");
+        console.log("\nDados do produto fisico");
         console.log(`ID: ${this.id}`);
         console.log(`Nome: ${this.nome}`);
         console.log(`Preço: ${this.preco}`);

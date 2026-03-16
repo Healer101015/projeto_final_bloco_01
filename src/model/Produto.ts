@@ -10,6 +10,8 @@ export abstract class Produto {
         this._preco = preco;
     }
 
+
+
     public get id(): number {
         return this._id;
     }
